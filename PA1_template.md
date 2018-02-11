@@ -10,7 +10,7 @@ output:
 ## Download and Prepare Data for Analysis 
 
 Step 1. Download the Personal Activity Monitoring data.  
-This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.  
+This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and includes the number of steps taken in 5 minute intervals each day.  
 
 The variables included in this dataset are:
 
@@ -85,7 +85,17 @@ geom_vline(color="blue", xintercept = maxsteps)
 
 The 5-minute interval, on average across all the days in the data set, containing the maximum number of steps is 835.
 
-## Impute missing values. Compare imputed to non-imputed data.
+## Impute missing values
+1.Calculate and report the total number of missing values in the dataset
+
+
+```r
+sum(is.na(PersonalActivityData$steps))
+```
+
+```
+## [1] 2304
+```
 Missing data needed to be imputed. Missing values were imputed by inserting the average number of steps for each interval.  
 
 ```r
@@ -105,7 +115,7 @@ hist(StepsByDay$steps, main = "Total Steps Each Day", col="blue", xlab="Number o
 legend("topright", c("Imputed", "Non-imputed"), col=c("purple", "blue"), lwd=10)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 Calculate new mean and median for imputed data. 
 
@@ -150,7 +160,7 @@ library(lattice)
 xyplot(StepsByIntervalImp$steps ~ StepsByIntervalImp$interval | StepsByIntervalImp$dow, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 There is a higher peak number of steps on weekdays, but it is in the same interval. Overall the were more intervals with a higher level of activity on the weekend days.
 

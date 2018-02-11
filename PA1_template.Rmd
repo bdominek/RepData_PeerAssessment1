@@ -15,7 +15,7 @@ library(ggplot2)
 ## Download and Prepare Data for Analysis 
 
 Step 1. Download the Personal Activity Monitoring data.  
-This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.  
+This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and includes the number of steps taken in 5 minute intervals each day.  
 
 The variables included in this dataset are:
 
@@ -81,7 +81,12 @@ geom_vline(color="blue", xintercept = maxsteps)
 
 The 5-minute interval, on average across all the days in the data set, containing the maximum number of steps is `r maxsteps`.
 
-## Impute missing values. Compare imputed to non-imputed data.
+## Impute missing values
+1.Calculate and report the total number of missing values in the dataset
+
+```{r}
+sum(is.na(PersonalActivityData$steps))
+```
 Missing data needed to be imputed. Missing values were imputed by inserting the average number of steps for each interval.  
 ```{r}
 
