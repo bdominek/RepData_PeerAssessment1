@@ -55,10 +55,12 @@ ggplot(data=StepsByDay, aes(StepsByDay$steps)) +
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
+options("scipen"=100, "digits"=4)
+
 rmean <- mean(StepsByDay$steps)
 rmedian <- median(StepsByDay$steps)
 ```
-The `mean` is 1.0766189\times 10^{4}  
+The `mean` is 10766.1887  
 The `median` is 10765.
 
 ## What is the average daily activity pattern?
@@ -108,10 +110,10 @@ Recount total steps by day and create Histogram.
 StepsByDayImp <- aggregate(steps ~ date, ImputedData, sum)
 
 
-hist(StepsByDayImp$steps, main = paste("Total Steps Each Day"), col="purple", xlab="Number of Steps")
+hist(StepsByDayImp$steps, main = "Total Steps Each Day", breaks=seq(0,25000,by=2500) , col="purple", xlab="Number of Steps")
 
 #Create Histogram to show difference. 
-hist(StepsByDay$steps, main = "Total Steps Each Day", col="blue", xlab="Number of Steps", add=T)
+hist(StepsByDay$steps, main = "Total Steps Each Day", breaks=seq(0,25000,by=2500), col="blue", xlab="Number of Steps", add=T)
 legend("topright", c("Imputed", "Non-imputed"), col=c("purple", "blue"), lwd=10)
 ```
 
@@ -120,15 +122,15 @@ legend("topright", c("Imputed", "Non-imputed"), col=c("purple", "blue"), lwd=10)
 Calculate new mean and median for imputed data. 
 
 ```r
-rmean.i <- mean(StepsByDayImp$steps)
-rmedian.i <- median(StepsByDayImp$steps)
+rmeanImp <- mean(StepsByDayImp$steps)
+rmedianImp <- median(StepsByDayImp$steps)
 ```
 
 Calculate difference between imputed and non-imputed data.
 
 ```r
-mean_diff <- rmean.i - rmean
-med_diff <- rmedian.i - rmedian
+mean_diff <- rmeanImp - rmean
+med_diff <- rmedianImp - rmedian
 ```
 
 Calculate total difference.
@@ -136,11 +138,11 @@ Calculate total difference.
 ```r
 total_diff <- sum(StepsByDayImp$steps) - sum(StepsByDay$steps)
 ```
-* The imputed data mean is 1.0766189\times 10^{4}
-* The imputed data median is 1.0766189\times 10^{4}
+* The imputed data mean is 10766.1887
+* The imputed data median is 10766.1887
 * The difference between the non-imputed mean and imputed mean is 0
-* The difference between the non-imputed mean and imputed mean is 1.1886792
-* The difference between total number of steps between imputed and non-imputed data is 8.6129509\times 10^{4}. Thus, there were 8.6129509\times 10^{4} more steps in the imputed data.
+* The difference between the non-imputed mean and imputed mean is 1.1887
+* The difference between total number of steps between imputed and non-imputed data is 86129.5094. Thus, there were 86129.5094 more steps in the imputed data.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
