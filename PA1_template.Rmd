@@ -129,7 +129,7 @@ total_diff <- sum(StepsByDayImp$steps) - sum(StepsByDay$steps)
 * The imputed data mean is `r rmeanImp`
 * The imputed data median is `r rmedianImp`
 * The difference between the non-imputed mean and imputed mean is `r mean_diff`
-* The difference between the non-imputed mean and imputed mean is `r med_diff`
+* The difference between the non-imputed median and imputed median is `r med_diff`
 * The difference between total number of steps between imputed and non-imputed data is `r total_diff`. Thus, there were `r total_diff` more steps in the imputed data.
 
 

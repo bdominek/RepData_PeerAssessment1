@@ -55,6 +55,7 @@ ggplot(data=StepsByDay, aes(StepsByDay$steps)) +
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
+# Set options to print numbers not in scientific notation
 options("scipen"=100, "digits"=4)
 
 rmean <- mean(StepsByDay$steps)
@@ -141,7 +142,7 @@ total_diff <- sum(StepsByDayImp$steps) - sum(StepsByDay$steps)
 * The imputed data mean is 10766.1887
 * The imputed data median is 10766.1887
 * The difference between the non-imputed mean and imputed mean is 0
-* The difference between the non-imputed mean and imputed mean is 1.1887
+* The difference between the non-imputed median and imputed median is 1.1887
 * The difference between total number of steps between imputed and non-imputed data is 86129.5094. Thus, there were 86129.5094 more steps in the imputed data.
 
 
